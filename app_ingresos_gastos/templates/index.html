@@ -1,42 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ingresos-Gastos</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block pageBase %} 
+
+{{ data }}
+
     <h1>Esto es una lista de Ingresos y Gastos</h1>
     <table>
-        <thead>
+    <thead>
+        <tr>
+            <th>Fecha</th>
+            <th>Concepto</th>
+            <th>Monto</th>
+        </tr>        
+    </thead>
+        
+    <tbody>
+        {% for item in data %}
             <tr>
-                <th>Fecha</th>
-                <th>Concepto</th>
-                <th>Monto</th>
-              </tr>
-
-        </thead>
-
-        <tbody>
-            <tr>
-                <td>01/02/2023</td>
-                <td>Ropa</td>
-                <td>-150€</td>
-              </tr>
-              <tr>
-                <td>01/03/2023</td>
-                <td>Salario</td>
-                <td>1500</td>
-              </tr>
-              <tr>
-                <td>15/03/2023</td>
-                <td>Supermercado</td>
-                <td>-200€</td>
-              </tr>
-
-        </tbody>
-       
-      </table> 
-</body>
-</html>
+                <td>{{item.fecha}}</td>
+                <td>{{item.concepto}}</td>
+                <td>{{item.monto}}€</td>
+            </tr>
+        {% endfor %}
+        
+    </tbody>
+    </table> <br>
+    <button>
+    <a href="/new">Nuevo</a>
+    </button>
+    <br><br>
+{% endblock %}
