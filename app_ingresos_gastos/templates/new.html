@@ -1,16 +1,1 @@
-{% extends "base.html" %}
-
-{% block pageBase %} 
-    <h1>Nuevo registro de Ingresos-Gastos</h1>
-            <form>
-                <label>Fecha:</label><br>
-                <input type="date" name="fecha"><br>
-                <label>Concepto:</label><br>
-                <input type="text" name="concepto"><br>
-                <label>Monto:</label><br>
-                <input type="number" name="monto"><br><br>
-                <button type="submit">Guardar</button>
-            </form><br>
-            <a href="/">Volver</a><br><br>
-            
-{% endblock %}
+{% extends "form.html" %}
