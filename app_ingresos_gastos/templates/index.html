@@ -2,7 +2,6 @@
 
 {% block pageBase %} 
 
-
     <h1>Esto es una lista de Ingresos y Gastos</h1>
     <table>
     <thead>
@@ -16,9 +15,9 @@
     <tbody>
         {% for item in data %}
             <tr>
-                <td>{{item.fecha}}</td>
-                <td>{{item.concepto}}</td>
-                <td>{{item.monto}}€</td>
+                <td>{{item[0]}}</td>
+                <td>{{item[1]}}</td>
+                <td>{{item[2]}}€</td>
             </tr>
         {% endfor %}
         

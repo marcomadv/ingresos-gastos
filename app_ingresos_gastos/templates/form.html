@@ -2,18 +2,23 @@
 
 {% block pageBase %} 
 <h1>{{tipoAccion}} de Ingresos-Gastos</h1>
-<form>
-    <label>Fecha:</label><br>
-    <input type="date" name="fecha"><br>
-    <label>Concepto:</label><br>
-    <input type="text" name="concepto"><br>
-    <label>Monto:</label><br>
-    <input type="number" name="monto"><br><br>
-    <button type="submit">{{tipoBoton}}</button>
-</form><br>
-<a href="/">Volver</a><br><br>
+    <form action= "/new" method="POST">
+        <label>Fecha:</label><br>
+        <input type="date" name="fecha" value="{{dataForm.fecha}}"><br>
+        <label>Concepto:</label><br>
+        <input type="text" name="concepto" value="{{dataForm.concepto}}"><br>
+        <label>Monto:</label><br>
+        <input type="number" name="monto" value="{{dataForm.monto}}" step="0.01"><br><br>
+        <button type="submit">{{tipoBoton}}</button>
+    </form><br>
+    <a href="/">Volver</a><br><br>
 
-
-
+    <div>
+        <ul>
+        {% for item in error %}
+            <li style="color: red;">{{item}}</li>
+        {% endfor %}
+        </ul>
+    </div>
 
 {%endblock%}
