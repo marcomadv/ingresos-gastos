@@ -28,3 +28,9 @@ lectura = csv.writer(mifichero,delimiter=',',quotechar='"')
 lectura.writerow(['25/04/2023','compra de zapatillas','-100'])
 mifichero.close()
 '''
+
+lista_id = ['1','2,','3','4','20','300']
+
+last_id= lista_id[len(lista_id)-1]
+
+print(last_id)

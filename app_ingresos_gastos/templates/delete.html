@@ -2,7 +2,27 @@
 
 {% block pageBase %} 
 <h1>Esto es la vista para eliminar registros</h1>
+{%for dato in data%}
 
+<table>
+    
+        <tr>
+            <td>Fecha:</td>
+            <td>{{dato[1]}}</td>
+        </tr>
+        <tr>
+            <td>Concepto:</td>
+            <td>{{dato[2]}}</td>
+        </tr>
+        <tr>
+            <td>Monto:</td>
+            <td>{{dato[3]}}</td>
+        </tr>
+</table>
+<form action="/delete/{{dato[0]}}" methods="POST">
+    <button type="submit">Borrar Registro</button>
 
+</form>
+{%endfor%}
 
 {%endblock%}

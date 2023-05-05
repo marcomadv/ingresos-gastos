@@ -4,11 +4,11 @@
 <h1>{{tipoAccion}} de Ingresos-Gastos</h1>
     <form action= "/new" method="POST">
         <label>Fecha:</label><br>
-        <input type="date" name="fecha" value="{{dataForm.fecha}}"><br>
+        <input type="date" name="fecha" value="{{dataForm[1]}}"><br>
         <label>Concepto:</label><br>
-        <input type="text" name="concepto" value="{{dataForm.concepto}}"><br>
+        <input type="text" name="concepto" value="{{dataForm[2]}}"><br>
         <label>Monto:</label><br>
-        <input type="number" name="monto" value="{{dataForm.monto}}" step="0.01"><br><br>
+        <input type="number" name="monto" value="{{dataForm[3]}}" step="0.01"><br><br>
         <button type="submit">{{tipoBoton}}</button>
     </form><br>
     <a href="/">Volver</a><br><br>
