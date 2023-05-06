@@ -1,24 +1,29 @@
 {% extends "base.html" %}
 
-{% block pageBase %} 
-<h1>{{tipoAccion}} de Ingresos-Gastos</h1>
-    <form action= "/new" method="POST">
-        <label>Fecha:</label><br>
-        <input type="date" name="fecha" value="{{dataForm[1]}}"><br>
-        <label>Concepto:</label><br>
-        <input type="text" name="concepto" value="{{dataForm[2]}}"><br>
-        <label>Monto:</label><br>
-        <input type="number" name="monto" value="{{dataForm[3]}}" step="0.01"><br><br>
-        <button type="submit">{{tipoBoton}}</button>
-    </form><br>
-    <a href="/">Volver</a><br><br>
+{% block pageBase %}
+<h1>Esto seria {{tipoAccion}} de Ingreso-Gastos</h1>
+        
+        <form action="{{urlForm}}" method="POST">
+            <label>Fecha:</label>
+            <input type="date" name="fecha" value="{{dataForm.fecha}}"><br>
+            <label>Concepto:</label>
+            <input type="text" name="concepto" value="{{dataForm.concepto}}"><br>
+            <label id="quantity">Monto:</label>
+            <input type="number" name="monto"  value="{{dataForm.monto}}" step="0.01"><br><br>
 
-    <div>
-        <ul>
-        {% for item in error %}
-            <li style="color: red;">{{item}}</li>
-        {% endfor %}
-        </ul>
-    </div>
+            <button type="submit">{{tipoBoton}}</button>
+        </form> 
 
-{%endblock%}
+
+        <a href="/">Volver</a>
+
+        <div style="background-color: aqua;">
+            <ul>
+                {% for item in error %}
+            
+                    <li style="color:red">{{item}}</li>
+            
+                {% endfor %}
+            </ul>
+        </div>
+{% endblock %}

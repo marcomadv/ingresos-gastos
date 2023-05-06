@@ -1,6 +1,5 @@
-from app_ingresos_gastos import app, LAST_ID_FILE, MOVIMIENTOS_FILE
+from app_ingresos_gastos import app
 from flask import render_template,request, redirect
-import csv
 from datetime import date
 from app_ingresos_gastos.models import *
 
@@ -23,24 +22,24 @@ def create():
         return redirect ("/")
     
     else:
-        return render_template("new.html",title = "Registro", tipoBoton= "Guardar",dataForm = {})
+        return render_template("new.html",title = "Registro", tipoBoton= "Guardar",dataForm = {} ,urlForm = "/new")
 
 @app.route("/update/<int:id>", methods =["GET","POST"])
 def edit(id):
     if request.method == 'GET':
-        mificheroUpdate = open(MOVIMIENTOS_FILE,'r')
-        lectura = csv.reader(mificheroUpdate, delimiter=',',quotechar='"')
-        registro_buscado=[]
-        for registros in lectura:
-            if registros[0] == str(id):
-                #aqui encuentro el id buscado en mi registro
-                registro_buscado=registros
-        return render_template("update.html", title="Actualizar",tipoAccion = "Actualización", tipoBoton="Editar",dataForm=registro_buscado)
+        registro_buscado=select_by(id,True)
 
+        return render_template("update.html", title="Actualizar",tipoAccion = "Actualización", tipoBoton="Editar",dataForm=registro_buscado, urlForm = f"/update/{id}")
     else:
-        #aqui entra el post
-        return f"aqui debo actualizar los datos con el registro dado id:{id}"
+        errores = validateForm(request.form)
+        if errores:
+            return render_template("update.html", title="Actualizar",tipoAccion = "Actualización", tipoBoton="Editar",dataForm=request.form, urlForm = f"/update/{id}",error = errores)
+        else:
+            registros = select_all()
+            update(id,registros,request.form)
     
+            return redirect("/")
+
 @app.route("/delete/<int:id>", methods = ["GET","POST"])
 def remove(id):
 
